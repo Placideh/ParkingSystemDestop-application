@@ -141,7 +141,9 @@ public class InsertCar extends javax.swing.JFrame {
             }
             int feePaid = 0;
             String QUERY = "INSERT INTO car(plate_no,name_type,model,entryTime,exitTime,feePaid,is_CarIn)VALUES(?,?,?,?,?,?,?)";
+            String QUERY2 = "INSERT INTO car2(plate_no,name_type,model,entryTime,exitTime,feePaid,is_CarIn)VALUES(?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(QUERY);
+            PreparedStatement statement2 = conn.prepareStatement(QUERY2);
             for(int i=0;i<cars.size();i++){
                 
             statement.setString(1, cars.get(i).getPlateNo());
@@ -151,9 +153,19 @@ public class InsertCar extends javax.swing.JFrame {
             statement.setDate(5, exitTime);
             statement.setInt(6, feePaid);
             statement.setInt(7, isCarIn);
+            //back up database
+            statement2.setString(1, cars.get(i).getPlateNo());
+            statement2.setString(2,cars.get(i).getTypeName());
+            statement2.setString(3, cars.get(i).getModel());
+            statement2.setTimestamp(4, sqlTime);
+            statement2.setDate(5, exitTime);
+            statement2.setInt(6, feePaid);
+            statement2.setInt(7, isCarIn);
             }
             int result = statement.executeUpdate();
-            if (result > 0) {
+            int result2 = statement2.executeUpdate();
+            
+            if (result > 0&& result2>0) {
                     JOptionPane.showMessageDialog(null,"Car Inserted!!");
             }
 
