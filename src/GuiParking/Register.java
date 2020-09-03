@@ -147,6 +147,7 @@ public class Register extends javax.swing.JFrame {
         java.sql.Timestamp sqlTime = new java.sql.Timestamp(date.getTime());
         int paid=0;
         String query = "INSERT INTO carWash (plate_no,name_type,model,price,count,time_cleanned,paid) VALUES(?,?,?,?,?,?,?)";
+        String query2 = "INSERT INTO carWash2 (plate_no,name_type,model,price,count,time_cleanned,paid) VALUES(?,?,?,?,?,?,?)";
         String selectQuery = "SELECT * FROM car WHERE plate_no='" + plateNo + "'";
         try ( Connection conn = DriverManager.getConnection(LINK, USERNAME, PASSWORD)) {
             PreparedStatement selectStat = conn.prepareStatement(selectQuery);
@@ -156,6 +157,7 @@ public class Register extends javax.swing.JFrame {
                 return;
             }
             PreparedStatement statement = conn.prepareStatement(query);
+            PreparedStatement statement2 = conn.prepareStatement(query2);
             int index=jComboBox1.getSelectedIndex();
             statement.setString(1, plateNo);
             statement.setString(2, type);
@@ -164,8 +166,17 @@ public class Register extends javax.swing.JFrame {
             statement.setInt(5, count);
             statement.setTimestamp(6, sqlTime);
             statement.setInt(7,paid);
+            //backup database
+            statement2.setString(1, plateNo);
+            statement2.setString(2, type);
+            statement2.setString(3, models.get(index).getName());
+            statement2.setString(4, models.get(index).getPrice());
+            statement2.setInt(5, count);
+            statement2.setTimestamp(6, sqlTime);
+            statement2.setInt(7,paid);
             int result = statement.executeUpdate();
-            if (result > 0) {
+            int result2 = statement2.executeUpdate();
+            if (result > 0&& result2>0) {
                 
                 JOptionPane.showMessageDialog(null,"Your Car Is In Service to be Cleaned!!");
             }

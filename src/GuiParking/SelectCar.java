@@ -259,14 +259,21 @@ public class SelectCar extends javax.swing.JFrame {
         String model=jComboBox1.getItemAt(selectedIndex).toUpperCase();
 
         String queryUpdate = "UPDATE car SET name_type=?,model=? WHERE plate_no=?";
+        String queryUpdate2 = "UPDATE car2 SET name_type=?,model=? WHERE plate_no=?";
 
         try ( Connection conn = DriverManager.getConnection(LINK, USERNAME, PASSWORD)) {
             PreparedStatement statUpdate = conn.prepareStatement(queryUpdate);
+            PreparedStatement statUpdate2 = conn.prepareStatement(queryUpdate2);
                     statUpdate.setString(1, nameType);
                     statUpdate.setString(2, model);
                     statUpdate.setString(3, plateNo);
+                    //backup database
+                    statUpdate2.setString(1, nameType);
+                    statUpdate2.setString(2, model);
+                    statUpdate2.setString(3, plateNo);
                 int result = statUpdate.executeUpdate();
-                if (result > 0) {
+                int result2 = statUpdate2.executeUpdate();
+                if (result > 0 && result2>0) {
                     JOptionPane.showMessageDialog(null,"Data Updated successfully!");
                     selectCar();
 

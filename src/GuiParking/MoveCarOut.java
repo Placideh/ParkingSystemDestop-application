@@ -147,15 +147,15 @@ public class MoveCarOut extends javax.swing.JFrame {
         String queryUpdate = "UPDATE car2 SET is_CarIn=? WHERE plate_no='" + plateNo + "'";
 
         try(Connection conn = DriverManager.getConnection(LINK, USERNAME, PASSWORD)){
-            PreparedStatement statDelete = conn.prepareStatement(queryDelete);
             PreparedStatement statUpdate = conn.prepareStatement(queryUpdate);
+            PreparedStatement statDelete = conn.prepareStatement(queryDelete);
             
             int option = JOptionPane.showConfirmDialog(null, "Do You Want to Pay;?", "warning", JOptionPane.YES_NO_OPTION);
 
             if (option == JOptionPane.YES_OPTION) {
                 statUpdate.setInt(1, 0);
-            int resultDelete =statDelete.executeUpdate();
             int result=statUpdate.executeUpdate();
+            int resultDelete =statDelete.executeUpdate();
             if (result > 0&&resultDelete>0 ) 
                 JOptionPane.showMessageDialog(null, "Car moved Out Successfully Thank you for working with us");
 

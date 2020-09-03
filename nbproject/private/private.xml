@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/placide/Documents/NetBeansProjects/ParkingSystemGui/src/GuiParking/Login.java</file>
+            <file>file:/C:/Users/placide/Documents/NetBeansProjects/ParkingSystemGui/src/GuiParking/EditCars.java</file>
             <file>file:/C:/Users/placide/Documents/NetBeansProjects/ParkingSystemGui/src/GuiParking/DeleteCar.java</file>
             <file>file:/C:/Users/placide/Documents/NetBeansProjects/ParkingSystemGui/src/GuiParking/Model.java</file>
             <file>file:/C:/Users/placide/Documents/NetBeansProjects/ParkingSystemGui/src/GuiParking/MoveCarOut.java</file>
@@ -19,6 +20,7 @@
             <file>file:/C:/Users/placide/Documents/NetBeansProjects/ParkingSystemGui/src/GuiParking/CarParkedIn.java</file>
             <file>file:/C:/Users/placide/Documents/NetBeansProjects/ParkingSystemGui/src/GuiParking/Register.java</file>
             <file>file:/C:/Users/placide/Documents/NetBeansProjects/ParkingSystemGui/src/GuiParking/CarServed.java</file>
+            <file>file:/C:/Users/placide/Documents/NetBeansProjects/ParkingSystemGui/src/GuiParking/AllCars.java</file>
             <file>file:/C:/Users/placide/Documents/NetBeansProjects/ParkingSystemGui/src/GuiParking/CarPark.java</file>
         </group>
     </open-files>
