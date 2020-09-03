@@ -143,17 +143,20 @@ public class MoveCarOut extends javax.swing.JFrame {
         //will be charged a late pernalty!
         String plateNo = jTextField1.getText().trim().toUpperCase();
 
-        String queryUpdate = "UPDATE car SET is_CarIn=? WHERE plate_no='" + plateNo + "'";
+        String queryDelete = "DELETE FROM car WHERE plate_no='" + plateNo + "'AND is_carIn=1";
+        String queryUpdate = "UPDATE car2 SET is_CarIn=? WHERE plate_no='" + plateNo + "'";
 
         try(Connection conn = DriverManager.getConnection(LINK, USERNAME, PASSWORD)){
+            PreparedStatement statDelete = conn.prepareStatement(queryDelete);
             PreparedStatement statUpdate = conn.prepareStatement(queryUpdate);
             
             int option = JOptionPane.showConfirmDialog(null, "Do You Want to Pay;?", "warning", JOptionPane.YES_NO_OPTION);
 
             if (option == JOptionPane.YES_OPTION) {
                 statUpdate.setInt(1, 0);
+            int resultDelete =statDelete.executeUpdate();
             int result=statUpdate.executeUpdate();
-            if (result > 0) 
+            if (result > 0&&resultDelete>0 ) 
                 JOptionPane.showMessageDialog(null, "Car moved Out Successfully Thank you for working with us");
 
             }else if(option==JOptionPane.NO_OPTION){
