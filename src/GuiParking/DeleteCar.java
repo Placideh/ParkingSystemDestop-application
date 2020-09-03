@@ -104,7 +104,7 @@ public class DeleteCar extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String plateNo=jTextField1.getText().trim().toUpperCase();
-        String queryDelete = "DELETE FROM car WHERE plate_no='" + plateNo + "'AND is_carIn=0";
+        String queryDelete = "DELETE FROM car2 WHERE plate_no='" + plateNo + "'AND is_carIn=0";
 
 
         try ( Connection conn = DriverManager.getConnection(LINK, USERNAME, PASSWORD)) {
